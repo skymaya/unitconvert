@@ -6,14 +6,7 @@ import argparse
 from digitalunits import *
 from lengthunits import *
 from timeunits import *
-
-
-class Mass(object):
-    pass
-
-
-class Volume(object):
-    pass
+from massunits import *
 
 
 # create digital instances

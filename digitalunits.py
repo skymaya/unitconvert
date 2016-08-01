@@ -1,4 +1,4 @@
-class Digital(object):
+class DigitalUnit(object):
     def __init__(self):
         self.decimal_base = 1000.0
         self.binary_base = 1024.0
@@ -11,64 +11,64 @@ class Digital(object):
             pass
 
 
-class Byte(Digital):
+class Byte(DigitalUnit):
     def __init__(self):
-        Digital.__init__(self)
+        DigitalUnit.__init__(self)
         self.decimal_base = 1.0
         self.type = 'decimal'
 
 
-class Kilobyte(Digital):
+class Kilobyte(DigitalUnit):
     def __init__(self):
-        Digital.__init__(self)
+        DigitalUnit.__init__(self)
         self.decimal_base = self.decimal_base
         self.type = 'decimal'
 
 
-class Megabyte(Digital):
+class Megabyte(DigitalUnit):
     def __init__(self):
-        Digital.__init__(self)
+        DigitalUnit.__init__(self)
         self.decimal_base = self.decimal_base**2
         self.type = 'decimal'
 
 
-class Gigabyte(Digital):
+class Gigabyte(DigitalUnit):
     def __init__(self):
-        Digital.__init__(self)
+        DigitalUnit.__init__(self)
         self.decimal_base = self.decimal_base**3
         self.type = 'decimal'
 
 
-class Terabyte(Digital):
+class Terabyte(DigitalUnit):
     def __init__(self):
-        Digital.__init__(self)
+        DigitalUnit.__init__(self)
         self.decimal_base = self.decimal_base**4
         self.type = 'decimal'
 
 
-class Petabyte(Digital):
+class Petabyte(DigitalUnit):
     def __init__(self):
-        Digital.__init__(self)
+        DigitalUnit.__init__(self)
         self.decimal_base = self.decimal_base**5
         self.type = 'decimal'
 
 
-class Exabyte(Digital):
+class Exabyte(DigitalUnit):
     def __init__(self):
-        Digital.__init__(self)
+        DigitalUnit.__init__(self)
         self.decimal_base = self.decimal_base**6
         self.type = 'decimal'
 
 
-class Zettabyte(Digital):
+class Zettabyte(DigitalUnit):
     def __init__(self):
-        Digital.__init__(self)
+        DigitalUnit.__init__(self)
         self.decimal_base = self.decimal_base**7
         self.type = 'decimal'
 
 
-class Yottabyte(Digital):
+class Yottabyte(DigitalUnit):
     def __init__(self):
-        Digital.__init__(self)
+        DigitalUnit.__init__(self)
         self.decimal_base = self.decimal_base**8
         self.type = 'decimal'

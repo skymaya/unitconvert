@@ -1,4 +1,4 @@
-class Length(object):
+class LengthUnit(object):
     def __init__(self):
         self.imperial_base = 25.4000508001
         self.metric_base = 1.0
@@ -11,55 +11,55 @@ class Length(object):
             pass
 
 
-class Millimeter(Length):
+class Millimeter(LengthUnit):
     def __init__(self):
-        Length.__init__(self)
+        LengthUnit.__init__(self)
         self.type = 'metric'
 
 
-class Centimeter(Length):
+class Centimeter(LengthUnit):
     def __init__(self):
-        Length.__init__(self)
+        LengthUnit.__init__(self)
         self.metric_base = 10.0
         self.type = 'metric'
 
 
-class Inch(Length):
+class Inch(LengthUnit):
     def __init__(self):
-        Length.__init__(self)
+        LengthUnit.__init__(self)
         self.type = 'imperial'
 
 
-class Foot(Length):
+class Foot(LengthUnit):
     def __init__(self):
-        Length.__init__(self)
+        LengthUnit.__init__(self)
         self.imperial_base = self.imperial_base * 12.0
         self.type = 'imperial'
 
 
-class Yard(Length):
+class Yard(LengthUnit):
     def __init__(self):
-        Length.__init__(self)
+        LengthUnit.__init__(self)
         self.imperial_base = self.imperial_base * 36.0
         self.type = 'imperial'
 
 
-class Meter(Length):
+class Meter(LengthUnit):
     def __init__(self):
-        Length.__init__(self)
+        LengthUnit.__init__(self)
         self.metric_base = 1000.0
         self.type = 'metric'
 
 
-class Kilometer(Length):
+class Kilometer(LengthUnit):
     def __init__(self):
-        Length.__init__(self)
+        LengthUnit.__init__(self)
         self.metric_base = 1000000.0
         self.type = 'metric'
 
 
-class Mile(Length):
+class Mile(LengthUnit):
     def __init__(self):
-        Length.__init__(self)
+        LengthUnit.__init__(self)
         self.imperial_base = self.imperial_base * 63360.0
         self.type = 'imperial'
