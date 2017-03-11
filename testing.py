@@ -1,6 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 
-import traceback
 import sys
 import argparse
 from digitalunits import (Byte, Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte,
@@ -42,5 +41,3 @@ if args.unit_from in length_units and args.unit_to in length_units:
 if args.unit_from in time_units and args.unit_to in time_units:
     conversion = (float(args.amount) * createtime(args.unit_from)) / createtime(args.unit_to)
     print "{0} {1} is {2} {3}".format(args.amount, args.unit_from, conversion, args.unit_to)
-# else:
-#     print 'Cannot convert to units of different types. Please see the help option (-h or --help) for usage information'
