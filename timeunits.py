@@ -50,3 +50,23 @@ class Year(TimeUnit):
     def __init__(self):
         TimeUnit.__init__(self)
         self.time_base = ((1000.0 * 3600.0) * 24.0) * 365.0
+
+
+def createtime(unit):
+    if unit == 'ms':
+        unit = Millisecond().unit_base()
+    if unit == 'sec':
+        unit = Second().unit_base()
+    if unit == 'min':
+        unit = Minute().unit_base()
+    if unit == 'hr':
+        unit = Hour().unit_base()
+    if unit == 'day':
+        unit = Day().unit_base()
+    if unit == 'wk':
+        unit = Week().unit_base()
+    if unit == 'mo':
+        unit = Month().unit_base()
+    if unit == 'yr':
+        unit = Year().unit_base()
+    return unit

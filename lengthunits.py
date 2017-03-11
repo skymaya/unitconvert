@@ -63,3 +63,23 @@ class Mile(LengthUnit):
         LengthUnit.__init__(self)
         self.imperial_base = self.imperial_base * 63360.0
         self.type = 'imperial'
+
+
+def createlength(unit):
+    if unit == 'mm':
+        unit = Millimeter().unit_base()
+    if unit == 'cm':
+        unit = Centimeter().unit_base()
+    if unit == 'in':
+        unit = Inch().unit_base()
+    if unit == 'ft':
+        unit = Foot().unit_base()
+    if unit == 'yd':
+        unit = Yard().unit_base()
+    if unit == 'm':
+        unit = Meter().unit_base()
+    if unit == 'km':
+        unit = Kilometer().unit_base()
+    if unit == 'mi':
+        unit = Mile().unit_base()
+    return unit

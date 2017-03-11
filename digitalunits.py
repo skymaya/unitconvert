@@ -72,3 +72,25 @@ class Yottabyte(DigitalUnit):
         DigitalUnit.__init__(self)
         self.decimal_base = self.decimal_base**8
         self.type = 'decimal'
+
+
+def createdigital(unit):
+    if unit == 'B':
+        unit = Byte().unit_base()
+    if unit == 'kB':
+        unit = Kilobyte().unit_base()
+    if unit == 'MB':
+        unit = Megabyte().unit_base()
+    if unit == 'GB':
+        unit = Gigabyte().unit_base()
+    if unit == 'TB':
+        unit = Terabyte().unit_base()
+    if unit == 'PB':
+        unit = Petabyte().unit_base()
+    if unit == 'EB':
+        unit = Exabyte().unit_base()
+    if unit == 'ZB':
+        unit = Zettabyte().unit_base()
+    if unit == 'YB':
+        unit = Yottabyte().unit_base()
+    return unit
