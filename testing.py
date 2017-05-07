@@ -2,13 +2,10 @@
 
 import sys
 import argparse
-from digitalunits import (Byte, Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte,
-Exabyte, Zettabyte, Yottabyte, createdigital)
-from lengthunits import (Millimeter, Centimeter, Inch, Foot, Yard, Meter,
-Kilometer, Mile, createlength)
-from timeunits import (Millisecond, Second, Minute, Hour, Day, Week, Month,
-Year, createtime)
-from massunits import *
+from digitalunits import DigitalUnit
+from lengthunits import LengthUnit
+from timeunits import TimeUnit
+# from massunits import *
 
 time_units = ['ms', 'sec', 'wk', 'day', 'hr', 'min', 'mo', 'yr']
 digital_units = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
@@ -30,14 +27,18 @@ parser.add_argument('-t', '--unit_to', help='Unit to convert to')
 
 args = parser.parse_args()
 
+def doconvert(ufrom, to, amount, init):
+    conversion = (float(amount) * init.getunitval(ufrom)) / init.getunitval(to)
+    return "{0} {1} is {2} {3}".format(amount, ufrom, conversion, to)
+
 if args.unit_from in digital_units and args.unit_to in digital_units:
-    conversion = (float(args.amount) * createdigital(args.unit_from)) / createdigital(args.unit_to)
-    print "{0} {1} is {2} {3}".format(args.amount, args.unit_from, conversion, args.unit_to)
+    du = DigitalUnit()
+    print doconvert(args.unit_from, args.unit_to, args.amount, du)
 
 if args.unit_from in length_units and args.unit_to in length_units:
-    conversion = (float(args.amount) * createlength(args.unit_from)) / createlength(args.unit_to)
-    print "{0} {1} is {2} {3}".format(args.amount, args.unit_from, conversion, args.unit_to)
+    lu = LengthUnit()
+    print doconvert(args.unit_from, args.unit_to, args.amount, lu)
 
 if args.unit_from in time_units and args.unit_to in time_units:
-    conversion = (float(args.amount) * createtime(args.unit_from)) / createtime(args.unit_to)
-    print "{0} {1} is {2} {3}".format(args.amount, args.unit_from, conversion, args.unit_to)
+    tu = TimeUnit()
+    print doconvert(args.unit_from, args.unit_to, args.amount, tu)
