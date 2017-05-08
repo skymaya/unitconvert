@@ -4,8 +4,8 @@ class DigitalUnit(object):
         self.binary_base = 1.024
 
     def getunitval(self, argument):
-        """Dispatch method"""
-        function = 'unit_'+str(argument)
+        """Takes a unit and returns a function to calculate the unit's value"""
+        function = 'unit_{0}'.format(str(argument))
         function = getattr(self, function, lambda: None)
         return function()
 
