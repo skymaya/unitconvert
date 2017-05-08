@@ -1,7 +1,10 @@
 #!/usr/bin/python
 
+#  standard library imports
 import sys
 import argparse
+
+# local application/library specific imports
 from digitalunits import DigitalUnit
 from lengthunits import LengthUnit
 from timeunits import TimeUnit
