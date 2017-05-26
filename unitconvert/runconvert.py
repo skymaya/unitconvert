@@ -2,14 +2,16 @@
 
 """docstring"""
 
+from __future__ import print_function
+
 #  standard library imports
 #import sys
 import argparse
 
 # local application/library specific imports
-from digitalunits import DigitalUnit
-from lengthunits import LengthUnit
-from timeunits import TimeUnit
+from unitconvert.digitalunits import DigitalUnit
+from unitconvert.lengthunits import LengthUnit
+from unitconvert.timeunits import TimeUnit
 
 # abbr for microseconds is mus
 TIME_UNITS = ['ms', 'sec', 'wk', 'day', 'hr', 'min', 'mo', 'yr']
@@ -49,15 +51,15 @@ def main():
 
     if args.unit_from in DIGITAL_UNITS and args.unit_to in DIGITAL_UNITS:
         digiu = DigitalUnit()
-        print doconvert(args.unit_from, args.unit_to, args.amount, digiu)
+        print(doconvert(args.unit_from, args.unit_to, args.amount, digiu))
 
     if args.unit_from in LENGTH_UNITS and args.unit_to in LENGTH_UNITS:
         lenu = LengthUnit()
-        print doconvert(args.unit_from, args.unit_to, args.amount, lenu)
+        print(doconvert(args.unit_from, args.unit_to, args.amount, lenu))
 
     if args.unit_from in TIME_UNITS and args.unit_to in TIME_UNITS:
         timeu = TimeUnit()
-        print doconvert(args.unit_from, args.unit_to, args.amount, timeu)
+        print(doconvert(args.unit_from, args.unit_to, args.amount, timeu))
 
 
 if __name__ == "__main__":
