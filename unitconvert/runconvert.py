@@ -12,11 +12,13 @@ import argparse
 from unitconvert.digitalunits import DigitalUnit
 from unitconvert.lengthunits import LengthUnit
 from unitconvert.timeunits import TimeUnit
+from unitconvert.volumeunits import VolumeUnit
 
 # abbr for microseconds is mus
 TIME_UNITS = ['ms', 'sec', 'wk', 'day', 'hr', 'min', 'mo', 'yr']
 DIGITAL_UNITS = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
 LENGTH_UNITS = ['mm', 'cm', 'in', 'ft', 'yd', 'm', 'km', 'mi']
+VOLUME_UNITS = ['ml', 'tsp', 'tbsp', 'cup', 'pt', 'qt', 'gal', 'l', 'in3', 'ft3']
 
 def do_argparser():
     """Parse and return command line arguments"""
@@ -28,6 +30,7 @@ def do_argparser():
         Digital: B, kB, MB, GB, TB, PB, EB, ZB, YB
         Length: mm, cm, in, ft, yd, m, km, mi
         Time: ms, sec, min, hr, day, wk, mo, yr
+        Volume: ml, tsp, tbsp, cup, pt, qt, gal, l, in3, ft3
         ''',
         formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('-a', '--amount', help='Amount to convert')
@@ -57,6 +60,10 @@ def main():
     if args.unit_from in TIME_UNITS and args.unit_to in TIME_UNITS:
         timeu = TimeUnit()
         print(doconvert(args.unit_from, args.unit_to, args.amount, timeu))
+
+    if args.unit_from in VOLUME_UNITS and args.unit_to in VOLUME_UNITS:
+        volu = VolumeUnit()
+        print(doconvert(args.unit_from, args.unit_to, args.amount, volu))
 
 if __name__ == "__main__":
     main()
