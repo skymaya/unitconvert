@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+"""placeholder docstring"""
+
 from setuptools import setup, find_packages
 
 setup(
