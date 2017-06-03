@@ -7,39 +7,47 @@ class LengthUnit(object):
         self.metric_base = 1.0
 
     def getunitval(self, argument):
-        """Takes a unit and returns a function to calculate the unit's value"""
+        """Return a function to calculate the unit's value"""
         function = 'unit_{0}'.format(str(argument))
         function = getattr(self, function, lambda: None)
         return function()
 
     def unit_mm(self):
-        """placeholder docstring"""
+        """Return the value of one Millimeter (mm)
+        based on a base metric value"""
         return self.metric_base
 
     def unit_cm(self):
-        """placeholder docstring"""
+        """Return the value of one Centimeter (cm)
+        based on a base metric value"""
         return self.metric_base * 10.0
 
     def unit_in(self):
-        """placeholder docstring"""
+        """Return the value of one Inch (in)
+        based on a base imperial value"""
         return self.imperial_base
 
     def unit_ft(self):
-        """placeholder docstring"""
+        """Return the value of one Foot (ft)
+        based on a base imperial value"""
         return self.imperial_base * 12.0
 
     def unit_yd(self):
-        """placeholder docstring"""
+        """Return the value of one Yard (yd)
+        based on a base imperial value"""
         return self.imperial_base * 36.0
 
     def unit_m(self):
-        """placeholder docstring"""
+        """Return the value of one Meter (m)
+        based on a base metric value"""
         return self.metric_base * 1000.0
 
     def unit_km(self):
-        """placeholder docstring"""
+        """Return the value of one Kilometer (km)
+        based on a base metric value"""
         return self.metric_base * 1000000.0
 
     def unit_mi(self):
-        """placeholder docstring"""
+        """Return the value of one Mile (mi)
+        based on a base imperial value"""
         return self.imperial_base * 63360.0

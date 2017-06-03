@@ -10,43 +10,52 @@ class DigitalUnit(object):
         self.binary_base = 1.024
 
     def getunitval(self, argument):
-        """Takes a unit and returns a function to calculate the unit's value"""
+        """Return a function to calculate the unit's value"""
         function = 'unit_{0}'.format(str(argument))
         function = getattr(self, function, lambda: None)
         return function()
 
     def unit_B(self):
-        """placeholder docstring"""
+        """Return the value of one Byte (B)
+        based on a base decimal value"""
         return self.decimal_base
 
     def unit_kB(self):
-        """placeholder docstring"""
+        """Return the value of one Kilobyte (kB)
+        based on a base decimal value"""
         return self.decimal_base * 1000
 
     def unit_MB(self):
-        """placeholder docstring"""
+        """Return the value of one Megabyte (MB)
+        based on a base decimal value"""
         return (self.decimal_base * 1000) ** 2
 
     def unit_GB(self):
-        """placeholder docstring"""
+        """Return the value of one Gigabyte (GB)
+        based on a base decimal value"""
         return (self.decimal_base * 1000) ** 3
 
     def unit_TB(self):
-        """placeholder docstring"""
+        """Return the value of one Terabyte (TB)
+        based on a base decimal value"""
         return (self.decimal_base * 1000) ** 4
 
     def unit_PB(self):
-        """placeholder docstring"""
+        """Return the value of one Petabyte (PB)
+        based on a base decimal value"""
         return (self.decimal_base * 1000) ** 5
 
     def unit_EB(self):
-        """placeholder docstring"""
+        """Return the value of one Exabyte (EB)
+        based on a base decimal value"""
         return (self.decimal_base * 1000) ** 6
 
     def unit_ZB(self):
-        """placeholder docstring"""
+        """Return the value of one Zettabyte (ZB)
+        based on a base decimal value"""
         return (self.decimal_base * 1000) ** 7
 
     def unit_YB(self):
-        """placeholder docstring"""
+        """Return the value of one Yottabyte (YB)
+        based on a base decimal value"""
         return (self.decimal_base * 1000) ** 8
