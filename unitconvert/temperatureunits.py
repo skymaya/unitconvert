@@ -20,5 +20,4 @@
 #     return '{0}{1} = {2}{3}'.format(amt, conv_from, calc, conv_to)
 
 # if args.unit_from and args.unit_to in temperature:
-#     print convert_temperature(4, float(args.amount), args.unit_from, 
-#     args.unit_to)
+#     print convert_temperature(4, float(args.amount), args.unit_from, args.unit_to)
