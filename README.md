@@ -1,4 +1,4 @@
-# Unitconvert: Unit conversion tool - Version 1.0 BETA
+# Unitconvert: Unit conversion tool - Version 1.0.0 BETA
 
 ## Synopsis
 
