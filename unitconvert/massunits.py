@@ -13,6 +13,19 @@ class MassUnit(object):
         function = getattr(self, function, lambda: None)
         return function()
 
+    def doconvert(self, ufrom, uto, amount):
+        """
+        Return calculated conversion between two units
+
+        :param ufrom: unit to convert from, i.e. KB
+        :param uto: unit to convert to, i.e. MB
+        :param amount: amount to convert, i.e. 100
+        :returns: original amount, converted amount, from unit, to unit,
+         i.e. 100 kB is 0.1 MB
+        """
+        conversion = (amount * self.getunitval(ufrom)) / self.getunitval(uto)
+        return "{0} {1} is {2} {3}".format(amount, ufrom, conversion, uto)
+
     def unit_mg(self):
         """Return the value of one Milligram (mg)
         based on a base metric value"""

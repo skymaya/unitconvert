@@ -39,41 +39,32 @@ def do_argparser():
         Mass: mg, g, oz, lb, kg
         ''',
         formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument('-a', '--amount', help='Amount to convert')
+    parser.add_argument('-a', '--amount', type=float, help='Amount to convert')
     parser.add_argument('-f', '--unit_from', help='Unit to convert from')
     parser.add_argument('-t', '--unit_to', help='Unit to convert to')
     return parser.parse_args()
 
-def doconvert(ufrom, uto, amount, init):
-    """Given a unit from, unit to convert to, amount to convert, and an
-    instance that calculates the units' base value, return the converted
-    amount"""
-    conversion = (float(amount) * init.getunitval(ufrom)) / init.getunitval(uto)
-    return "{0} {1} is {2} {3}".format(amount, ufrom, conversion, uto)
-
 def main():
     """Main function"""
     args = do_argparser()
+    ufrom = args.unit_from
+    uto = args.unit_to
+    amt = args.amount
 
-    if args.unit_from in DIGITAL_UNITS and args.unit_to in DIGITAL_UNITS:
-        digiu = DigitalUnit()
-        print(doconvert(args.unit_from, args.unit_to, args.amount, digiu))
+    if ufrom in DIGITAL_UNITS and uto in DIGITAL_UNITS:
+        print(DigitalUnit().doconvert(ufrom, uto, amt))
 
-    if args.unit_from in LENGTH_UNITS and args.unit_to in LENGTH_UNITS:
-        lenu = LengthUnit()
-        print(doconvert(args.unit_from, args.unit_to, args.amount, lenu))
+    if ufrom in LENGTH_UNITS and uto in LENGTH_UNITS:
+        print(LengthUnit().doconvert(ufrom, uto, amt))
 
-    if args.unit_from in TIME_UNITS and args.unit_to in TIME_UNITS:
-        timeu = TimeUnit()
-        print(doconvert(args.unit_from, args.unit_to, args.amount, timeu))
+    if ufrom in TIME_UNITS and uto in TIME_UNITS:
+        print(TimeUnit().doconvert(ufrom, uto, amt))
 
-    if args.unit_from in VOLUME_UNITS and args.unit_to in VOLUME_UNITS:
-        volu = VolumeUnit()
-        print(doconvert(args.unit_from, args.unit_to, args.amount, volu))
+    if ufrom in VOLUME_UNITS and uto in VOLUME_UNITS:
+        print(VolumeUnit().doconvert(ufrom, uto, amt))
 
-    if args.unit_from in MASS_UNITS and args.unit_to in MASS_UNITS:
-        massu = MassUnit()
-        print(doconvert(args.unit_from, args.unit_to, args.amount, massu))
+    if ufrom in MASS_UNITS and uto in MASS_UNITS:
+        print(MassUnit().doconvert(ufrom, uto, amt))
 
 if __name__ == "__main__":
     main()
