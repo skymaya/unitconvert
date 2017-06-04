@@ -17,7 +17,8 @@ from unitconvert.massunits import MassUnit
 
 # abbr for microseconds is mus
 TIME_UNITS = ['ms', 'sec', 'wk', 'day', 'hr', 'min', 'mo', 'yr']
-DIGITAL_UNITS = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+DIGITAL_UNITS = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB', 'KiB',
+                 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
 LENGTH_UNITS = ['mm', 'cm', 'in', 'ft', 'yd', 'm', 'km', 'mi']
 VOLUME_UNITS = ['ml', 'tsp', 'tbsp', 'cup', 'pt', 'qt', 'gal', 'l', 'in3', 'ft3']
 MASS_UNITS = ['mg', 'g', 'oz', 'lb', 'kg']
@@ -29,7 +30,9 @@ def do_argparser():
         A simple command-line unit conversion tool.
         ''',
         epilog='''Available unit types and units:
-        Digital: B, kB, MB, GB, TB, PB, EB, ZB, YB
+        Digital:
+                Decimal: B, kB, MB, GB, TB, PB, EB, ZB, YB
+                Binary: KiB, MiB, GiB, TiB, PiB, EiB, ZiB, YiB
         Length: mm, cm, in, ft, yd, m, km, mi
         Time: ms, sec, min, hr, day, wk, mo, yr
         Volume: ml, tsp, tbsp, cup, pt, qt, gal, l, in3, ft3
