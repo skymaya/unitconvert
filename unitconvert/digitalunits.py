@@ -6,7 +6,6 @@
 class DigitalUnit(object):
     """placeholder docstring"""
     def __init__(self):
-        #self.powers_def = powers_def
         self.decimal_base = 1.0  # bytes in a byte (decimal)
         self.binary_base = 1.024 # bytes in a byte (binary)
 
