@@ -5,7 +5,6 @@
 from __future__ import print_function
 
 #  standard library imports
-#import sys
 import argparse
 
 # local application/library specific imports
