@@ -4,8 +4,8 @@
 class VolumeUnit(object):
     """placeholder docstring"""
     def __init__(self):
-        self.metric_base = 1.0
-        self.us_base = 4.92892159
+        self.metric_base = 1.0  # milliliters in a milliliter
+        self.us_base = 4.92892159  # milliliters in a teaspoon
 
     def getunitval(self, argument):
         """Return a function to calculate the unit's value"""

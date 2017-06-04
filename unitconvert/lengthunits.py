@@ -1,10 +1,11 @@
 """placeholder docstring"""
 
+
 class LengthUnit(object):
     """placeholder docstring"""
     def __init__(self):
-        self.imperial_base = 25.4000508001
-        self.metric_base = 1.0
+        self.imperial_base = 25.4000508001  # millimeters in an inch
+        self.metric_base = 1.0  # millimeters in a millimeter
 
     def getunitval(self, argument):
         """Return a function to calculate the unit's value"""

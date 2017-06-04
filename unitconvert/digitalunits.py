@@ -6,8 +6,8 @@
 class DigitalUnit(object):
     """placeholder docstring"""
     def __init__(self):
-        self.decimal_base = 1.0
-        self.binary_base = 1.024
+        self.decimal_base = 1.0  # bytes in a byte (decimal)
+        self.binary_base = 1.024 # bytes in a byte (binary)
 
     def getunitval(self, argument):
         """Return a function to calculate the unit's value"""
