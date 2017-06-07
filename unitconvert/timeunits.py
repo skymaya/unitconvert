@@ -17,6 +17,8 @@ class TimeUnit(object):
 
     def doconvert(self):
         """Return calculated conversion between two units"""
+        if self.amt < 0:
+            raise ValueError('Amount must be a positive number')
         conv = (self.amt * self.getuval(self.ufrom)) / self.getuval(self.uto)
         return "{0} {1} is {2} {3}".format(self.amt, self.ufrom, conv, self.uto)
 
