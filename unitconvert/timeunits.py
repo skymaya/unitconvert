@@ -3,27 +3,22 @@
 
 class TimeUnit(object):
     """placeholder docstring"""
-    def __init__(self):
+    def __init__(self, amt, ufrom, uto):
         self.time_base = 1.0  # minutes in a minute
+        self.amt = amt
+        self.ufrom = ufrom
+        self.uto = uto
 
-    def getunitval(self, argument):
+    def getuval(self, argument):
         """Return a function to calculate the unit's value"""
         function = 'unit_{0}'.format(str(argument))
         function = getattr(self, function, lambda: None)
         return function()
 
-    def doconvert(self, ufrom, uto, amount):
-        """
-        Return calculated conversion between two units
-
-        :param ufrom: unit to convert from, i.e. KB
-        :param uto: unit to convert to, i.e. MB
-        :param amount: amount to convert, i.e. 100
-        :returns: original amount, converted amount, from unit, to unit,
-         i.e. 100 kB is 0.1 MB
-        """
-        conversion = (amount * self.getunitval(ufrom)) / self.getunitval(uto)
-        return "{0} {1} is {2} {3}".format(amount, ufrom, conversion, uto)
+    def doconvert(self):
+        """Return calculated conversion between two units"""
+        conv = (self.amt * self.getuval(self.ufrom)) / self.getuval(self.uto)
+        return "{0} {1} is {2} {3}".format(self.amt, self.ufrom, conv, self.uto)
 
     def unit_ms(self):
         """Return the value of one Millisecond (ms)
