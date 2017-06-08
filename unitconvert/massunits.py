@@ -32,7 +32,13 @@ class MassUnit(object):
         return function()
 
     def doconvert(self):
-        """Return calculated conversion between two units"""
+        """
+        Return calculated conversion between two units
+
+        :returns: string containing original unit and value with converted
+        unit and value
+        :raises ValueError: if the amount (amt) is less than 0
+        """
         if self.amt < 0:
             raise ValueError('Amount must be a positive number')
         conv = (self.amt * self._getuval(self.ufrom)) / self._getuval(self.uto)

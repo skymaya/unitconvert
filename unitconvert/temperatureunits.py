@@ -31,7 +31,13 @@ class TemperatureUnit(object):
         return function()
 
     def doconvert(self):
-        """Return calculated conversion between two units"""
+        """
+        Return calculated conversion between two units
+
+        :returns: string containing original unit and value with converted
+        unit and value
+        :raises ValueError: if the amount (amt) is less than 0
+        """
         conv = self._getuval(self.ufrom)[0][self.uto]
         return "{0} {1} is {2} {3}".format(self.amt, self.ufrom, conv, self.uto)
 
