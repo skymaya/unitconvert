@@ -3,13 +3,33 @@
 """
 Module name: runconvert
 
-This module contains the main function for the unitconvert application.
+This module contains the main function and arguments for the unitconvert
+application.
 
-example code to run module
+Example:
+    python runconvert.py -a 1 -f ft -t in
+    returns: 1.0 ft is 12.0 in
 
-List of classes
-List of functions in the classes
-List of imported modules
+Imports:
+    argparse: standard library
+    DigitalUnit from unitconvert.digitalunits: local application
+    LengthUnit from unitconvert.lengthunits: local application
+    TimeUnit from unitconvert.timeunits: local application
+    VolumeUnit from unitconvert.volumeunits: local application
+    MassUnit from unitconvert.massunits: local application
+    TemperatureUnit from unitconvert.temperatureunits: local application
+
+Functions:
+    do_argparser: Parse and return command line arguments
+    main: Main function
+
+Constants:
+    TIME_UNITS: list of time unit abbreviations
+    DIGITAL_UNITS: list of digital unit abbreviations
+    LENGTH_UNITS: list of length unit abbreviations
+    VOLUME_UNITS: list of volume unit abbreviations
+    MASS_UNITS: list of mass unit abbreviations
+    TEMP_UNITS: list of temperature unit abbreviations
 """
 
 from __future__ import print_function

@@ -1,3 +1,4 @@
+# pylint: disable=I0011,R0903
 """
 Module name: volumeunits
 
@@ -8,21 +9,11 @@ Example:
     VolumeUnit(1, 'tbsp', 'tsp').doconvert()
     returns: 1.0 tbsp is 3.0 tsp
 
-Classes:
-    VolumeUnit
-        Functions:
-            getuval
-            doconvert
-            unit_ml
-            unit_tsp
-            unit_tbsp
-            unit_cup
-            unit_pt
-            unit_qt
-            unit_gal
-            unit_l
-            unit_in3
-            unit_ft3
+Exportables:
+    Classes:
+        VolumeUnit
+            Functions:
+                doconvert: Return calculated conversion between two units
 """
 
 
@@ -35,9 +26,9 @@ class VolumeUnit(object):
         self.ufrom = ufrom
         self.uto = uto
 
-    def getuval(self, argument):
+    def _getuval(self, argument):
         """Return a function to calculate the unit's value"""
-        function = 'unit_{0}'.format(str(argument))
+        function = '_unit_{0}'.format(str(argument))
         function = getattr(self, function, lambda: None)
         return function()
 
@@ -45,55 +36,55 @@ class VolumeUnit(object):
         """Return calculated conversion between two units"""
         if self.amt < 0:
             raise ValueError('Amount must be a positive number')
-        conv = (self.amt * self.getuval(self.ufrom)) / self.getuval(self.uto)
+        conv = (self.amt * self._getuval(self.ufrom)) / self._getuval(self.uto)
         return "{0} {1} is {2} {3}".format(self.amt, self.ufrom, conv, self.uto)
 
-    def unit_ml(self):
+    def _unit_ml(self):
         """Return the value of one Milliliter (ml)
         based on a base metric value"""
         return self.metric_base
 
-    def unit_tsp(self):
+    def _unit_tsp(self):
         """Return the value of one Teaspoon (tsp)
         based on a base us value"""
         return self.us_base
 
-    def unit_tbsp(self):
+    def _unit_tbsp(self):
         """Return the value of one Tablespoon (tbsp)
         based on a base us value"""
         return self.us_base * 3.0
 
-    def unit_cup(self):
+    def _unit_cup(self):
         """Return the value of one Cup (cup)
         based on a base us value"""
         return self.us_base * 48.0
 
-    def unit_pt(self):
+    def _unit_pt(self):
         """Return the value of one Pint (pt)
         based on a base us value"""
         return self.us_base * 96.0
 
-    def unit_qt(self):
+    def _unit_qt(self):
         """Return the value of one Quart (qt)
         based on a base us value"""
         return self.us_base * 192.0
 
-    def unit_gal(self):
+    def _unit_gal(self):
         """Return the value of one Gallon (gal)
         based on a base us value"""
         return self.us_base * 768.0
 
-    def unit_l(self):
+    def _unit_l(self):
         """Return the value of one Liter (l)
         based on a base metric value"""
         return self.metric_base * 1000.0
 
-    def unit_in3(self):
+    def _unit_in3(self):
         """Return the value of one Cubic Inch (in3)
         based on a base us value"""
         return (self.us_base * 768.0) / 231
 
-    def unit_ft3(self):
+    def _unit_ft3(self):
         """Return the value of one Cubic Foot (ft3)
         based on a base us value"""
         return ((self.us_base * 768.0) / 231) * 1728

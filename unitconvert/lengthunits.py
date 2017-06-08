@@ -1,3 +1,4 @@
+# pylint: disable=I0011,R0903
 """
 Module name: lengthunits
 
@@ -8,19 +9,11 @@ Example:
     LengthUnit(1, 'ft', 'in').doconvert()
     returns: 1.0 ft is 12.0 in
 
-Classes:
-    LengthUnit
-        Functions:
-            getuval
-            doconvert
-            unit_mm
-            unit_cm
-            unit_in
-            unit_ft
-            unit_yd
-            unit_m
-            unit_km
-            unit_mi
+Exportables:
+    Classes:
+        LengthUnit
+            Functions:
+                doconvert: Return calculated conversion between two units
 """
 
 
@@ -33,9 +26,9 @@ class LengthUnit(object):
         self.ufrom = ufrom
         self.uto = uto
 
-    def getuval(self, argument):
+    def _getuval(self, argument):
         """Return a function to calculate the unit's value"""
-        function = 'unit_{0}'.format(str(argument))
+        function = '_unit_{0}'.format(str(argument))
         function = getattr(self, function, lambda: None)
         return function()
 
@@ -43,45 +36,45 @@ class LengthUnit(object):
         """Return calculated conversion between two units"""
         if self.amt < 0:
             raise ValueError('Amount must be a positive number')
-        conv = (self.amt * self.getuval(self.ufrom)) / self.getuval(self.uto)
+        conv = (self.amt * self._getuval(self.ufrom)) / self._getuval(self.uto)
         return "{0} {1} is {2} {3}".format(self.amt, self.ufrom, conv, self.uto)
 
-    def unit_mm(self):
+    def _unit_mm(self):
         """Return the value of one Millimeter (mm)
         based on a base metric value"""
         return self.metric_base
 
-    def unit_cm(self):
+    def _unit_cm(self):
         """Return the value of one Centimeter (cm)
         based on a base metric value"""
         return self.metric_base * 10.0
 
-    def unit_in(self):
+    def _unit_in(self):
         """Return the value of one Inch (in)
         based on a base imperial value"""
         return self.imperial_base
 
-    def unit_ft(self):
+    def _unit_ft(self):
         """Return the value of one Foot (ft)
         based on a base imperial value"""
         return self.imperial_base * 12.0
 
-    def unit_yd(self):
+    def _unit_yd(self):
         """Return the value of one Yard (yd)
         based on a base imperial value"""
         return self.imperial_base * 36.0
 
-    def unit_m(self):
+    def _unit_m(self):
         """Return the value of one Meter (m)
         based on a base metric value"""
         return self.metric_base * 1000.0
 
-    def unit_km(self):
+    def _unit_km(self):
         """Return the value of one Kilometer (km)
         based on a base metric value"""
         return self.metric_base * 1000000.0
 
-    def unit_mi(self):
+    def _unit_mi(self):
         """Return the value of one Mile (mi)
         based on a base imperial value"""
         return self.imperial_base * 63360.0

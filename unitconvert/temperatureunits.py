@@ -1,4 +1,4 @@
-# pylint: disable=I0011,C0103
+# pylint: disable=I0011,C0103,R0903
 """
 Module name: temperatureunits
 
@@ -9,14 +9,11 @@ Example:
     TemperatureUnit(32, 'F', 'C').doconvert()
     returns: 32.0 F is 0.0 C
 
-Classes:
-    TemperatureUnit
-        Functions:
-            getuval
-            doconvert
-            unit_F
-            unit_C
-            unit_K
+Exportables:
+    Classes:
+        TemperatureUnit
+            Functions:
+                doconvert: Return calculated conversion between two units
 """
 
 
@@ -27,18 +24,18 @@ class TemperatureUnit(object):
         self.ufrom = ufrom
         self.uto = uto
 
-    def getuval(self, argument):
+    def _getuval(self, argument):
         """Return a function to calculate the unit's value"""
-        function = 'unit_{0}'.format(str(argument))
+        function = '_unit_{0}'.format(str(argument))
         function = getattr(self, function, lambda: None)
         return function()
 
     def doconvert(self):
         """Return calculated conversion between two units"""
-        conv = self.getuval(self.ufrom)[0][self.uto]
+        conv = self._getuval(self.ufrom)[0][self.uto]
         return "{0} {1} is {2} {3}".format(self.amt, self.ufrom, conv, self.uto)
 
-    def unit_F(self):
+    def _unit_F(self):
         """placeholder docstring"""
         calc = {
             'C': (self.amt - 32.0) * 5 / 9,
@@ -47,7 +44,7 @@ class TemperatureUnit(object):
         },
         return calc
 
-    def unit_C(self):
+    def _unit_C(self):
         """placeholder docstring"""
         calc = {
             'F': (self.amt * 9) / 5 + 32.0,
@@ -56,7 +53,7 @@ class TemperatureUnit(object):
         },
         return calc
 
-    def unit_K(self):
+    def _unit_K(self):
         """placeholder docstring"""
         calc = {
             'F': self.amt * 9 / 5 - 459.67,
