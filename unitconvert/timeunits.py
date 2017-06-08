@@ -1,4 +1,26 @@
-"""placeholder docstring"""
+"""
+Module name: timeunits
+
+Calculate and return a value of one time unit converted from another time unit.
+
+Example:
+    TimeUnit(1, 'min', 'sec').doconvert()
+    returns: 1.0 min is 60.0 sec
+
+Classes:
+    TimeUnit
+        Functions:
+            getuval
+            doconvert
+            unit_ms
+            unit_sec
+            unit_min
+            unit_hr
+            unit_day
+            unit_wk
+            unit_mo
+            unit_yr
+"""
 
 
 class TimeUnit(object):

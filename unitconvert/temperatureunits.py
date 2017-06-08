@@ -1,5 +1,23 @@
 # pylint: disable=I0011,C0103
-"""placeholder docstring"""
+"""
+Module name: temperatureunits
+
+Calculate and return a value of one temperature unit converted from another
+temperature unit.
+
+Example:
+    TemperatureUnit(32, 'F', 'C').doconvert()
+    returns: 32.0 F is 0.0 C
+
+Classes:
+    TemperatureUnit
+        Functions:
+            getuval
+            doconvert
+            unit_F
+            unit_C
+            unit_K
+"""
 
 
 class TemperatureUnit(object):

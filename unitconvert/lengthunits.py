@@ -1,4 +1,27 @@
-"""placeholder docstring"""
+"""
+Module name: lengthunits
+
+Calculate and return a value of one length unit converted from another length
+unit.
+
+Example:
+    LengthUnit(1, 'ft', 'in').doconvert()
+    returns: 1.0 ft is 12.0 in
+
+Classes:
+    LengthUnit
+        Functions:
+            getuval
+            doconvert
+            unit_mm
+            unit_cm
+            unit_in
+            unit_ft
+            unit_yd
+            unit_m
+            unit_km
+            unit_mi
+"""
 
 
 class LengthUnit(object):

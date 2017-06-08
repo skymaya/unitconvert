@@ -1,5 +1,37 @@
 # pylint: disable=I0011,C0103
-"""placeholder docstring"""
+"""
+Module name: digitalunits
+
+Calculate and return a value of one digital unit converted from another digital
+unit.
+
+Example:
+    DigitalUnit(5, 'GB', 'MB').doconvert()
+    returns: 5.0 GB is 5000.0 MB
+
+Classes:
+    DigitalUnit
+        Functions:
+            getuval
+            doconvert
+            unit_B
+            unit_kB
+            unit_KiB
+            unit_MB
+            unit_MiB
+            unit_GB
+            unit_GiB
+            unit_TB
+            unit_TiB
+            unit_PB
+            unit_PiB
+            unit_EB
+            unit_EiB
+            unit_ZB
+            unit_ZiB
+            unit_YB
+            unit_YiB
+"""
 
 
 class DigitalUnit(object):

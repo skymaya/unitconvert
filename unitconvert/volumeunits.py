@@ -1,4 +1,29 @@
-"""placeholder docstring"""
+"""
+Module name: volumeunits
+
+Calculate and return a value of one volume unit converted from another volume
+unit.
+
+Example:
+    VolumeUnit(1, 'tbsp', 'tsp').doconvert()
+    returns: 1.0 tbsp is 3.0 tsp
+
+Classes:
+    VolumeUnit
+        Functions:
+            getuval
+            doconvert
+            unit_ml
+            unit_tsp
+            unit_tbsp
+            unit_cup
+            unit_pt
+            unit_qt
+            unit_gal
+            unit_l
+            unit_in3
+            unit_ft3
+"""
 
 
 class VolumeUnit(object):

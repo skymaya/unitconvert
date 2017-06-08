@@ -1,4 +1,23 @@
-"""placeholder docstring"""
+"""
+Module name: massunits
+
+Calculate and return a value of one mass unit converted from another mass unit.
+
+Example:
+    MassUnit(16, 'oz', 'lb').doconvert()
+    returns: 16.0 oz is 1.0 lb
+
+Classes:
+    MassUnit
+        Functions:
+            getuval
+            doconvert
+            unit_mg
+            unit_g
+            unit_oz
+            unit_lb
+            unit_kg
+"""
 
 
 class MassUnit(object):

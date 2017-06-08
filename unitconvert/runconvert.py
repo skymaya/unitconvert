@@ -1,6 +1,16 @@
 #!/usr/bin/python
 
-"""docstring"""
+"""
+Module name: runconvert
+
+This module contains the main function for the unitconvert application.
+
+example code to run module
+
+List of classes
+List of functions in the classes
+List of imported modules
+"""
 
 from __future__ import print_function
 
