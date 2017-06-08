@@ -18,7 +18,14 @@ Exportables:
 
 
 class DigitalUnit(object):
-    """placeholder docstring"""
+    """
+    Initialize a DigitalUnit to return the results of doconvert(), for the
+    purpose of converting one digital unit to another digital unit
+
+    :param amt: float, amount to convert from
+    :param ufrom: string, unit to convert from
+    :param uto: string, unit to convert to
+    """
     def __init__(self, amt, ufrom, uto):
         self.decimal_base = 1.0  # bytes in a byte (decimal)
         self.binary_base = 1.024 # bytes in a byte (binary)

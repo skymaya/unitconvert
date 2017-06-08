@@ -18,7 +18,14 @@ Exportables:
 
 
 class TemperatureUnit(object):
-    """placeholder docstring"""
+    """
+    Initialize a TemperatureUnit to return the results of doconvert(), for the
+    purpose of converting one temperature unit to another temperature unit
+
+    :param amt: float, amount to convert from
+    :param ufrom: string, unit to convert from
+    :param uto: string, unit to convert to
+    """
     def __init__(self, amt, ufrom, uto):
         self.amt = amt
         self.ufrom = ufrom

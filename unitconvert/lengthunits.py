@@ -18,7 +18,14 @@ Exportables:
 
 
 class LengthUnit(object):
-    """placeholder docstring"""
+    """
+    Initialize a LengthUnit to return the results of doconvert(), for the
+    purpose of converting one length unit to another length unit
+
+    :param amt: float, amount to convert from
+    :param ufrom: string, unit to convert from
+    :param uto: string, unit to convert to
+    """
     def __init__(self, amt, ufrom, uto):
         self.imperial_base = 25.4000508001  # millimeters in an inch
         self.metric_base = 1.0  # millimeters in a millimeter

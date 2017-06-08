@@ -17,7 +17,14 @@ Exportables:
 
 
 class MassUnit(object):
-    """placeholder docstring"""
+    """
+    Initialize a MassUnit to return the results of doconvert(), for the
+    purpose of converting one mass unit to another mass unit
+
+    :param amt: float, amount to convert from
+    :param ufrom: string, unit to convert from
+    :param uto: string, unit to convert to
+    """
     def __init__(self, amt, ufrom, uto):
         self.metric_base = 1.0  # grams in a gram
         self.imperial_base = 28.349523125  # grams in an ounce
