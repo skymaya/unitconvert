@@ -36,7 +36,8 @@ class TemperatureUnit(object):
         return "{0} {1} is {2} {3}".format(self.amt, self.ufrom, conv, self.uto)
 
     def _unit_F(self):
-        """placeholder docstring"""
+        """Return a dictionary containing Fahrenheit (F), Celsius (C), or
+        Kelvin (K) keys (F, C, K) and values converted from F to F, C, and K"""
         calc = {
             'C': (self.amt - 32.0) * 5 / 9,
             'K': (self.amt + 459.67) * 5 / 9,
@@ -45,7 +46,8 @@ class TemperatureUnit(object):
         return calc
 
     def _unit_C(self):
-        """placeholder docstring"""
+        """Return a dictionary containing Fahrenheit (F), Celsius (C), or
+        Kelvin (K) keys (F, C, K) and values converted from C to F, C, and K"""
         calc = {
             'F': (self.amt * 9) / 5 + 32.0,
             'K': self.amt + 273.15,
@@ -54,7 +56,8 @@ class TemperatureUnit(object):
         return calc
 
     def _unit_K(self):
-        """placeholder docstring"""
+        """Return a dictionary containing Fahrenheit (F), Celsius (C), or
+        Kelvin (K) keys (F, C, K) and values converted from K to F, C, and K"""
         calc = {
             'F': self.amt * 9 / 5 - 459.67,
             'C': self.amt - 273.15,
