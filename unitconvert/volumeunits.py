@@ -36,7 +36,7 @@ class VolumeUnit(object):
     def _getuval(self, argument):
         """Return a function to calculate the unit's value"""
         function = '_unit_{0}'.format(str(argument))
-        function = getattr(self, function, lambda: None)
+        function = getattr(self, function)
         return function()
 
     def doconvert(self):
