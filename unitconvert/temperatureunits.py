@@ -45,7 +45,7 @@ class TemperatureUnit(object):
         unit and value
         :raises ValueError: if the amount (amt) is less than 0
         """
-        conv = self._getuval(self.ufrom)[0][self.uto]
+        conv = self._getuval(self.ufrom)[self.uto]
         return "{0} {1} is {2} {3}".format(self.amt, self.ufrom, conv, self.uto)
 
     def _unit_F(self):
@@ -55,7 +55,7 @@ class TemperatureUnit(object):
             'C': (self.amt - 32.0) * 5 / 9,
             'K': (self.amt + 459.67) * 5 / 9,
             'F': self.amt
-        },
+        }
         return calc
 
     def _unit_C(self):
@@ -65,7 +65,7 @@ class TemperatureUnit(object):
             'F': (self.amt * 9) / 5 + 32.0,
             'K': self.amt + 273.15,
             'C': self.amt
-        },
+        }
         return calc
 
     def _unit_K(self):
@@ -74,7 +74,7 @@ class TemperatureUnit(object):
         if self.amt < 0:
             raise ValueError('Amount must be a positive number')
         calc = {
-            'F': self.amt * 9 / 5 - 459.67,
+            'F': (self.amt * 9) / 5 - 459.67,
             'C': self.amt - 273.15,
             'K': self.amt
         }
