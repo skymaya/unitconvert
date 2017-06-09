@@ -71,6 +71,8 @@ class TemperatureUnit(object):
     def _unit_K(self):
         """Return a dictionary containing Fahrenheit (F), Celsius (C), or
         Kelvin (K) keys (F, C, K) and values converted from K to F, C, and K"""
+        if self.amt < 0:
+            raise ValueError('Amount must be a positive number')
         calc = {
             'F': self.amt * 9 / 5 - 459.67,
             'C': self.amt - 273.15,
