@@ -1,15 +1,32 @@
 #!/usr/bin/python
 
-# pylint: skip-file
+"""Unit tests for the getuval function"""
 
-class dummy(object):
+#  standard library imports
+import unittest
+
+
+class GetUvalTest(object):
+    """Test getuval and the output of functions called by it."""
     def getuval(self, argument):
-        """Return a function to calculate the unit's value"""
-        function = 'test_{0}'.format(argument)
+        """Return a function named after given string."""
+        function = 'do_{0}'.format(argument)
         function = getattr(self, function)
         return function()
 
-    def test_blah(self):
+    @staticmethod
+    def do_hello():
+        """Return 'hello world'"""
         return 'hello world'
 
-print dummy().getuval('blah')
+
+class TestOutput(unittest.TestCase):
+    """Test the output is equal to the expected output."""
+    def test_hello(self):
+        """Test the output of the do_hello function."""
+        result = GetUvalTest().getuval('hello')
+        self.assertEqual(result, 'hello world')
+
+
+if __name__ == '__main__':
+    unittest.main()
