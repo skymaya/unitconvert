@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# pylint: skip-file
+
 class dummy(object):
     def getuval(self, argument):
         """Return a function to calculate the unit's value"""
