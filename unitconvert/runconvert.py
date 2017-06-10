@@ -61,24 +61,27 @@ def do_argparser():
         description='''
         A simple command-line unit conversion tool.
         ''',
-        epilog='''Available unit types and units:
-        Digital:
-                Decimal: B, kB, MB, GB, TB, PB, EB, ZB, YB
-                Binary: KiB, MiB, GiB, TiB, PiB, EiB, ZiB, YiB
-        Length: mm, cm, in, ft, yd, m, km, mi
-        Time: ms, sec, min, hr, day, wk, mo, yr
-        Volume:
-                Metric: ml, l
-                US customary: tsp, tbsp, cup, pt, qt, gal
-                US legal: lcup
-                Cubic: in3, ft3
-        Mass: mg, g, oz, lb, kg
-        Temperature: F, C, K
+        epilog='''Available unit types and unit arguments:
+Digital:
+        Decimal: B, kB, MB, GB, TB, PB, EB, ZB, YB
+        Binary: KiB, MiB, GiB, TiB, PiB, EiB, ZiB, YiB
+Length: mm, cm, in, ft, yd, m, km, mi
+Time: ms, sec, min, hr, day, wk, mo, yr
+Volume:
+        Metric: ml, l
+        US customary: tsp, tbsp, cup, pt, qt, gal
+        US legal: lcup
+        Cubic: in3, ft3
+Mass: mg, g, oz, lb, kg
+Temperature: F, C, K
         ''',
         formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument('-a', '--amount', type=float, help='Amount to convert')
-    parser.add_argument('-f', '--unit_from', help='Unit to convert from')
-    parser.add_argument('-t', '--unit_to', help='Unit to convert to')
+    parser.add_argument('-a', '--amount', type=float, help='Amount to convert',
+                        required=True)
+    parser.add_argument('-f', '--unit_from', help='Unit to convert from',
+                        required=True)
+    parser.add_argument('-t', '--unit_to', help='Unit to convert to',
+                        required=True)
     return parser.parse_args()
 
 def format_output(org_amt, conv_amt, org_ufrom, conv_uto):
