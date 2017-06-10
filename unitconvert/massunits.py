@@ -6,7 +6,7 @@ Calculate and return a value of one mass unit converted from another mass unit.
 
 Example:
     MassUnit(16, 'oz', 'lb').doconvert()
-    returns: 16.0 oz is 1.0 lb
+    returns: 1.0
 
 Exportables:
     Classes:
@@ -49,7 +49,7 @@ class MassUnit(object):
         if self.amt < 0:
             raise ValueError('Amount must be a positive number')
         conv = (self.amt * self._getuval(self.ufrom)) / self._getuval(self.uto)
-        return "{0} {1} is {2} {3}".format(self.amt, self.ufrom, conv, self.uto)
+        return conv
 
     def _unit_mg(self):
         """Return the value of one Milligram (mg)

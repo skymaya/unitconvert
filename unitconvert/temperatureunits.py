@@ -7,7 +7,7 @@ temperature unit.
 
 Example:
     TemperatureUnit(32, 'F', 'C').doconvert()
-    returns: 32.0 F is 0.0 C
+    returns: 0.0
 
 Exportables:
     Classes:
@@ -46,7 +46,7 @@ class TemperatureUnit(object):
         :raises ValueError: if the amount (amt) is less than 0
         """
         conv = self._getuval(self.ufrom)[self.uto]
-        return "{0} {1} is {2} {3}".format(self.amt, self.ufrom, conv, self.uto)
+        return conv
 
     def _unit_F(self):
         """Return a dictionary containing Fahrenheit (F), Celsius (C), or

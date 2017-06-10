@@ -76,6 +76,11 @@ def do_argparser():
     parser.add_argument('-t', '--unit_to', help='Unit to convert to')
     return parser.parse_args()
 
+def format_output(org_amt, conv_amt, org_ufrom, conv_uto):
+    """Return a string containing the original amount, original unit,
+    converted amount, and unit converted to in a nice easy to read format."""
+    return '{0} {1} is {2} {3}'.format(org_amt, org_ufrom, conv_amt, conv_uto)
+
 def main():
     """Main function"""
     args = do_argparser()
@@ -84,22 +89,28 @@ def main():
     amt = args.amount
 
     if ufrom in DIGITAL_UNITS and uto in DIGITAL_UNITS:
-        print(DigitalUnit(amt, ufrom, uto).doconvert())
+        result = DigitalUnit(amt, ufrom, uto).doconvert()
+        print(format_output(amt, result, ufrom, uto))
 
     if ufrom in LENGTH_UNITS and uto in LENGTH_UNITS:
-        print(LengthUnit(amt, ufrom, uto).doconvert())
+        result = LengthUnit(amt, ufrom, uto).doconvert()
+        print(format_output(amt, result, ufrom, uto))
 
     if ufrom in TIME_UNITS and uto in TIME_UNITS:
-        print(TimeUnit(amt, ufrom, uto).doconvert())
+        result = TimeUnit(amt, ufrom, uto).doconvert()
+        print(format_output(amt, result, ufrom, uto))
 
     if ufrom in VOLUME_UNITS and uto in VOLUME_UNITS:
-        print(VolumeUnit(amt, ufrom, uto).doconvert())
+        result = VolumeUnit(amt, ufrom, uto).doconvert()
+        print(format_output(amt, result, ufrom, uto))
 
     if ufrom in MASS_UNITS and uto in MASS_UNITS:
-        print(MassUnit(amt, ufrom, uto).doconvert())
+        result = MassUnit(amt, ufrom, uto).doconvert()
+        print(format_output(amt, result, ufrom, uto))
 
     if ufrom in TEMP_UNITS and uto in TEMP_UNITS:
-        print(TemperatureUnit(amt, ufrom, uto).doconvert())
+        result = TemperatureUnit(amt, ufrom, uto).doconvert()
+        print(format_output(amt, result, ufrom, uto))
 
 if __name__ == "__main__":
     main()

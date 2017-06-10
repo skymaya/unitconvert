@@ -6,7 +6,7 @@ Calculate and return a value of one time unit converted from another time unit.
 
 Example:
     TimeUnit(1, 'min', 'sec').doconvert()
-    returns: 1.0 min is 60.0 sec
+    returns: 60.0
 
 Exportables:
     Classes:
@@ -48,7 +48,7 @@ class TimeUnit(object):
         if self.amt < 0:
             raise ValueError('Amount must be a positive number')
         conv = (self.amt * self._getuval(self.ufrom)) / self._getuval(self.uto)
-        return "{0} {1} is {2} {3}".format(self.amt, self.ufrom, conv, self.uto)
+        return conv
 
     def _unit_ms(self):
         """Return the value of one Millisecond (ms)

@@ -7,7 +7,7 @@ unit.
 
 Example:
     VolumeUnit(1, 'tbsp', 'tsp').doconvert()
-    returns: 1.0 tbsp is 3.0 tsp
+    returns: 3.0
 
 Exportables:
     Classes:
@@ -50,7 +50,7 @@ class VolumeUnit(object):
         if self.amt < 0:
             raise ValueError('Amount must be a positive number')
         conv = (self.amt * self._getuval(self.ufrom)) / self._getuval(self.uto)
-        return "{0} {1} is {2} {3}".format(self.amt, self.ufrom, conv, self.uto)
+        return conv
 
     def _unit_ml(self):
         """Return the value of one Milliliter (ml)
