@@ -2,7 +2,7 @@
 
 # pylint: disable=I0011,W0108
 
-"""Unit tests for the temperatureunits module"""
+"""Unit tests for the lengthunits module"""
 
 #  standard library imports
 import unittest
