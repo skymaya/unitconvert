@@ -19,7 +19,9 @@ class VolumeUnit(object):
     """
     def __init__(self, amt, ufrom, uto):
         self.metric_base = 1.0  # milliliters in a milliliter
-        self.us_base = 4.92892159  # milliliters in a teaspoon
+        self.us_customary_base = 4.92892159375  # milliliters in a teaspoon
+        self.us_legal_base = 0  # placeholder, not used
+        self.imperial_base = 0  # placeholder, not used
         self.amt = amt
         self.ufrom = ufrom
         self.uto = uto
@@ -51,32 +53,32 @@ class VolumeUnit(object):
     def unit_tsp(self):
         """Return the value of one Teaspoon (tsp)
         based on a base us value"""
-        return self.us_base
+        return self.us_customary_base
 
     def unit_tbsp(self):
         """Return the value of one Tablespoon (tbsp)
         based on a base us value"""
-        return self.us_base * 3.0
+        return self.us_customary_base * 3.0
 
     def unit_cup(self):
         """Return the value of one Cup (cup)
         based on a base us value"""
-        return self.us_base * 48.0
+        return self.us_customary_base * 48.0
 
     def unit_pt(self):
         """Return the value of one Pint (pt)
         based on a base us value"""
-        return self.us_base * 96.0
+        return self.us_customary_base * 96.0
 
     def unit_qt(self):
         """Return the value of one Quart (qt)
         based on a base us value"""
-        return self.us_base * 192.0
+        return self.us_customary_base * 192.0
 
     def unit_gal(self):
         """Return the value of one Gallon (gal)
         based on a base us value"""
-        return self.us_base * 768.0
+        return self.us_customary_base * 768.0
 
     def unit_l(self):
         """Return the value of one Liter (l)
@@ -86,12 +88,12 @@ class VolumeUnit(object):
     def unit_in3(self):
         """Return the value of one Cubic Inch (in3)
         based on a base us value"""
-        return (self.us_base * 768.0) / 231
+        return (self.us_customary_base * 768.0) / 231
 
     def unit_ft3(self):
         """Return the value of one Cubic Foot (ft3)
         based on a base us value"""
-        return ((self.us_base * 768.0) / 231) * 1728
+        return ((self.us_customary_base * 768.0) / 231) * 1728
 
 
 class TestConversions(unittest.TestCase):
