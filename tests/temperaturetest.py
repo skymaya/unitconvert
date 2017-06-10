@@ -2,7 +2,7 @@
 
 """Unit tests for the temperatureunits module"""
 
-# pylint: disable=I0011,C0103,R0903
+# pylint: disable=I0011,C0103,R0903,W0108
 
 #  standard library imports
 import unittest
@@ -31,7 +31,7 @@ class TemperatureUnit(object):
     def doconvert(self):
         """Return string containing converted value"""
         conv = self.getuval(self.ufrom)[self.uto]
-        return "{0}".format(conv)
+        return conv
 
     def unit_F(self):
         """Return a dictionary containing Fahrenheit (F), Celsius (C), or
@@ -70,18 +70,18 @@ class TestConversions(unittest.TestCase):
     """Test cases to ensure results are correct using a small sampling."""
     def test_f2c(self):
         """Test converting F to C"""
-        result = TemperatureUnit(32, 'F', 'C').doconvert()
-        self.assertEqual(result, '0.0')
+        result = round(TemperatureUnit(32, 'F', 'C').doconvert(), 1)
+        self.assertEqual(result, 0.0)
 
     def test_f2k(self):
         """Test converting F to K"""
-        result = TemperatureUnit(5, 'F', 'K').doconvert()
-        self.assertEqual(result, '258.15')
+        result = round(TemperatureUnit(5, 'F', 'K').doconvert(), 2)
+        self.assertEqual(result, round(258.15, 2))
 
     def test_k2c(self):
         """Test converting K to C"""
-        result = TemperatureUnit(34, 'K', 'C').doconvert()
-        self.assertEqual(result, '-239.15')
+        result = round(TemperatureUnit(34, 'K', 'C').doconvert(), 2)
+        self.assertEqual(result, round(-239.15, 2))
 
 
 class TestOutput(unittest.TestCase):
@@ -105,6 +105,15 @@ class TestOutput(unittest.TestCase):
         result = TemperatureUnit(34, None, None).unit_K()
         self.assertTrue(isinstance(result, dict))
         self.assertEqual(len(result), 3)
+
+
+class TestExceptions(unittest.TestCase):
+    """Test case to ensure providing a negative amount for Kelvin throws
+    ValueError."""
+    def test_k2c(self):
+        """Test converting k to c"""
+        result = TemperatureUnit(-16, 'K', 'C')
+        self.assertRaises(ValueError, lambda: result.doconvert())
 
 
 if __name__ == '__main__':
