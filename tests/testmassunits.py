@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# pylint: disable=I0011,W0108
+
 """Unit tests for the temperatureunits module"""
 
 #  standard library imports
@@ -39,7 +41,7 @@ class MassUnit(object):
         if self.amt < 0:
             raise ValueError('Amount must be a positive number')
         conv = (self.amt * self.getuval(self.ufrom)) / self.getuval(self.uto)
-        return "{0}".format(conv)
+        return conv
 
     def unit_mg(self):
         """Return the value of one Milligram (mg)
@@ -71,18 +73,36 @@ class TestConversions(unittest.TestCase):
     """Test cases to ensure results are correct using a small sampling."""
     def test_oz2lb(self):
         """Test converting oz to lb"""
-        result = MassUnit(16, 'oz', 'lb').doconvert()
-        self.assertEqual(result, '1.0')
+        result = round(MassUnit(16, 'oz', 'lb').doconvert(), 2)
+        self.assertEqual(result, round(1.0, 2))
 
     def test_g2lb(self):
         """Test converting g to lb"""
-        result = MassUnit(27, 'g', 'lb').doconvert()
-        self.assertEqual(result, '0.0595248107899')
+        result = round(MassUnit(27, 'g', 'lb').doconvert(), 2)
+        self.assertEqual(result, round(0.0595248107899, 2))
 
     def test_oz2mg(self):
         """Test converting oz to mg"""
-        result = MassUnit(1, 'oz', 'mg').doconvert()
-        self.assertEqual(result, '28349.523125')
+        result = round(MassUnit(1, 'oz', 'mg').doconvert(), 2)
+        self.assertEqual(result, round(28349.523125, 2))
+
+
+class TestExceptions(unittest.TestCase):
+    """Test cases to ensure providing a negative amount throws ValueError."""
+    def test_oz2lb(self):
+        """Test converting oz to lb"""
+        result = MassUnit(-16, 'oz', 'lb')
+        self.assertRaises(ValueError, lambda: result.doconvert())
+
+    def test_g2lb(self):
+        """Test converting g to lb"""
+        result = MassUnit(-27, 'g', 'lb')
+        self.assertRaises(ValueError, lambda: result.doconvert())
+
+    def test_oz2mg(self):
+        """Test converting oz to mg"""
+        result = MassUnit(-1, 'oz', 'mg')
+        self.assertRaises(ValueError, lambda: result.doconvert())
 
 
 if __name__ == '__main__':
