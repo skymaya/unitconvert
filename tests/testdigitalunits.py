@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# pylint: disable=I0011,C0103,R0903
+# pylint: disable=I0011,C0103,R0903,W0108
 
 """Unit tests for the digitalunits module"""
 
@@ -41,7 +41,7 @@ class DigitalUnit(object):
         if self.amt < 0:
             raise ValueError('Amount must be a positive number')
         conv = (self.amt * self.getuval(self.ufrom)) / self.getuval(self.uto)
-        return "{0}".format(conv)
+        return conv
 
     def unit_B(self):
         """Return the value of one Byte (B)
@@ -133,18 +133,36 @@ class TestConversions(unittest.TestCase):
     """Test cases to ensure results are correct using a small sampling."""
     def test_mb2tb(self):
         """Test converting MB to TB"""
-        result = DigitalUnit(326578, 'MB', 'TB').doconvert()
-        self.assertEqual(result, '0.326578')
+        result = round(DigitalUnit(326578, 'MB', 'TB').doconvert(), 3)
+        self.assertEqual(result, round(0.326578, 3))
 
     def test_kib2mb(self):
         """Test converting KiB to MB"""
-        result = DigitalUnit(26978, 'KiB', 'MB').doconvert()
-        self.assertEqual(result, '27.625472')
+        result = round(DigitalUnit(26978, 'KiB', 'MB').doconvert(), 3)
+        self.assertEqual(result, round(27.625472, 3))
 
     def test_gb2gib(self):
         """Test converting GB to GiB"""
-        result = DigitalUnit(5, 'GB', 'GiB').doconvert()
-        self.assertEqual(result, '4.65661287308')
+        result = round(DigitalUnit(5, 'GB', 'GiB').doconvert(), 3)
+        self.assertEqual(result, round(4.65661287308, 3))
+
+
+class TestExceptions(unittest.TestCase):
+    """Test cases to ensure providing a negative amount throws ValueError."""
+    def test_mb2tb(self):
+        """Test converting MB to TB"""
+        result = DigitalUnit(-32, 'MB', 'TB')
+        self.assertRaises(ValueError, lambda: result.doconvert())
+
+    def test_kib2mb(self):
+        """Test converting KiB to MB"""
+        result = DigitalUnit(-2, 'KiB', 'MB')
+        self.assertRaises(ValueError, lambda: result.doconvert())
+
+    def test_gb2gib(self):
+        """Test converting GB to GiB"""
+        result = DigitalUnit(-6, 'GB', 'GiB')
+        self.assertRaises(ValueError, lambda: result.doconvert())
 
 
 if __name__ == '__main__':
