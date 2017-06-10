@@ -29,8 +29,8 @@ class VolumeUnit(object):
     def __init__(self, amt, ufrom, uto):
         self.metric_base = 1.0  # milliliters in a milliliter
         self.us_customary_base = 4.92892159375  # milliliters in a teaspoon
-        self.us_legal_base = 0  # placeholder, not used
-        self.imperial_base = 0  # placeholder, not used
+        self.us_legal_base = 5.0  # milliliters in a teaspoon
+        self.imperial_base = 5.916666666666667  # milliliters in a teaspoon
         self.amt = amt
         self.ufrom = ufrom
         self.uto = uto
@@ -61,32 +61,37 @@ class VolumeUnit(object):
 
     def _unit_tsp(self):
         """Return the value of one Teaspoon (tsp)
-        based on a base us value"""
+        based on a base us customary value"""
         return self.us_customary_base
 
     def _unit_tbsp(self):
         """Return the value of one Tablespoon (tbsp)
-        based on a base us value"""
+        based on a base us customary value"""
         return self.us_customary_base * 3.0
 
     def _unit_cup(self):
-        """Return the value of one Cup (cup)
-        based on a base us value"""
+        """Return the value of one US customary Cup (cup)
+        based on a base us customary value"""
         return self.us_customary_base * 48.0
+
+    def _unit_lcup(self):
+        """Return the value of one US legal Cup (lcup)
+        based on a base us legal value"""
+        return self.us_legal_base * 48.0
 
     def _unit_pt(self):
         """Return the value of one Pint (pt)
-        based on a base us value"""
+        based on a base us customary value"""
         return self.us_customary_base * 96.0
 
     def _unit_qt(self):
         """Return the value of one Quart (qt)
-        based on a base us value"""
+        based on a base us customary value"""
         return self.us_customary_base * 192.0
 
     def _unit_gal(self):
         """Return the value of one Gallon (gal)
-        based on a base us value"""
+        based on a base us customary value"""
         return self.us_customary_base * 768.0
 
     def _unit_l(self):
@@ -96,10 +101,10 @@ class VolumeUnit(object):
 
     def _unit_in3(self):
         """Return the value of one Cubic Inch (in3)
-        based on a base us value"""
+        based on a base us customary value"""
         return (self.us_customary_base * 768.0) / 231
 
     def _unit_ft3(self):
         """Return the value of one Cubic Foot (ft3)
-        based on a base us value"""
+        based on a base us customary value"""
         return ((self.us_customary_base * 768.0) / 231) * 1728

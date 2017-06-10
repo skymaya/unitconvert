@@ -50,7 +50,8 @@ TIME_UNITS = ['ms', 'sec', 'wk', 'day', 'hr', 'min', 'mo', 'yr']
 DIGITAL_UNITS = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB', 'KiB',
                  'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
 LENGTH_UNITS = ['mm', 'cm', 'in', 'ft', 'yd', 'm', 'km', 'mi']
-VOLUME_UNITS = ['ml', 'tsp', 'tbsp', 'cup', 'pt', 'qt', 'gal', 'l', 'in3', 'ft3']
+VOLUME_UNITS = ['ml', 'tsp', 'tbsp', 'cup', 'lcup', 'pt', 'qt', 'gal', 'l',
+                'in3', 'ft3']
 MASS_UNITS = ['mg', 'g', 'oz', 'lb', 'kg']
 TEMP_UNITS = ['F', 'C', 'K']
 
@@ -66,7 +67,11 @@ def do_argparser():
                 Binary: KiB, MiB, GiB, TiB, PiB, EiB, ZiB, YiB
         Length: mm, cm, in, ft, yd, m, km, mi
         Time: ms, sec, min, hr, day, wk, mo, yr
-        Volume: ml, tsp, tbsp, cup, pt, qt, gal, l, in3, ft3
+        Volume:
+                Metric: ml, l
+                US customary: tsp, tbsp, cup, pt, qt, gal
+                US legal: lcup
+                Cubic: in3, ft3
         Mass: mg, g, oz, lb, kg
         Temperature: F, C, K
         ''',

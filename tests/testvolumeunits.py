@@ -20,8 +20,8 @@ class VolumeUnit(object):
     def __init__(self, amt, ufrom, uto):
         self.metric_base = 1.0  # milliliters in a milliliter
         self.us_customary_base = 4.92892159375  # milliliters in a teaspoon
-        self.us_legal_base = 0  # placeholder, not used
-        self.imperial_base = 0  # placeholder, not used
+        self.us_legal_base = 5.0  # milliliters in a teaspoon
+        self.imperial_base = 5.916666666666667  # milliliters in a teaspoon
         self.amt = amt
         self.ufrom = ufrom
         self.uto = uto
@@ -64,6 +64,11 @@ class VolumeUnit(object):
         """Return the value of one Cup (cup)
         based on a base us value"""
         return self.us_customary_base * 48.0
+
+    def unit_lcup(self):
+        """Return the value of one Cup (cup)
+        based on a base us value"""
+        return self.us_legal_base * 48.0
 
     def unit_pt(self):
         """Return the value of one Pint (pt)
@@ -112,6 +117,11 @@ class TestConversions(unittest.TestCase):
         """Test converting tbsp to l"""
         result = round(VolumeUnit(4.7, 'tbsp', 'l').doconvert(), 4)
         self.assertEqual(result, round(0.0694978, 4))
+
+    def test_lcup2l(self):
+        """Test converting tbsp to l"""
+        result = round(VolumeUnit(1, 'lcup', 'l').doconvert(), 4)
+        self.assertEqual(result, round(0.24, 4))
 
 
 class TestExceptions(unittest.TestCase):
