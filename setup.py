@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""placeholder docstring"""
+"""Setup script for the unitconvert application"""
 
 from setuptools import setup, find_packages
 
