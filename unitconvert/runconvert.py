@@ -82,6 +82,8 @@ Temperature: F, C, K
                         required=True)
     parser.add_argument('-t', '--unit_to', help='Unit to convert to',
                         required=True)
+    parser.add_argument('-v', '--version', help='unitconvert, Version 1.0.1, 2016-2017',
+                        required=False)
     return parser.parse_args()
 
 def format_output(org_amt, conv_amt, org_ufrom, conv_uto):
