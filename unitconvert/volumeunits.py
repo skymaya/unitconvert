@@ -69,6 +69,11 @@ class VolumeUnit(object):
         based on a base us customary value"""
         return self.us_customary_base * 3.0
 
+    def _unit_floz(self):
+        """Return the value of one US customary fluid Ounce (floz)
+        based on a base us customary value"""
+        return self.us_customary_base * 6.0
+
     def _unit_cup(self):
         """Return the value of one US customary Cup (cup)
         based on a base us customary value"""

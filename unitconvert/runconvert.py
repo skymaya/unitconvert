@@ -51,7 +51,7 @@ DIGITAL_UNITS = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB', 'KiB',
                  'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
 LENGTH_UNITS = ['mm', 'cm', 'in', 'ft', 'yd', 'm', 'km', 'mi']
 VOLUME_UNITS = ['ml', 'tsp', 'tbsp', 'cup', 'lcup', 'pt', 'qt', 'gal', 'l',
-                'in3', 'ft3']
+                'in3', 'ft3', 'floz']
 MASS_UNITS = ['mg', 'g', 'oz', 'lb', 'kg']
 TEMP_UNITS = ['F', 'C', 'K']
 
@@ -69,7 +69,7 @@ Length: mm, cm, in, ft, yd, m, km, mi
 Time: ms, sec, min, hr, day, wk, mo, yr
 Volume:
         Metric: ml, l
-        US customary: tsp, tbsp, cup, pt, qt, gal
+        US customary: tsp, tbsp, floz, cup, pt, qt, gal
         US legal: lcup
         Cubic: in3, ft3
 Mass: mg, g, oz, lb, kg

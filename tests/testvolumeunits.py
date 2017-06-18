@@ -60,6 +60,11 @@ class VolumeUnit(object):
         based on a base us value"""
         return self.us_customary_base * 3.0
 
+    def unit_floz(self):
+        """Return the value of one US customary fluid Ounce (floz)
+        based on a base us customary value"""
+        return self.us_customary_base * 6.0
+
     def unit_cup(self):
         """Return the value of one Cup (cup)
         based on a base us value"""
@@ -122,6 +127,11 @@ class TestConversions(unittest.TestCase):
         """Test converting tbsp to l"""
         result = round(VolumeUnit(1, 'lcup', 'l').doconvert(), 4)
         self.assertEqual(result, round(0.24, 4))
+
+    def test_cup2floz(self):
+        """Test converting cup to floz"""
+        result = round(VolumeUnit(1, 'cup', 'floz').doconvert(), 4)
+        self.assertEqual(result, round(8.0, 4))
 
 
 class TestExceptions(unittest.TestCase):
