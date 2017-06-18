@@ -35,6 +35,7 @@ Arguments:
 * -f UNIT_FROM: Unit to convert from
 * -t UNIT_TO: Unit to convert to
 * -v VERSION: Optional, print version info
+* -h with no other arguments: print help info
 
 Available unit types and unit arguments (in parentheses):
 
