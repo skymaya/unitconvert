@@ -82,18 +82,13 @@ Temperature: F, C, K
                         required=True)
     parser.add_argument('-t', '--unit_to', help='Unit to convert to',
                         required=True)
+    parser.add_argument('-v', '--version', help='unitconvert, Version 1.0.1, 2016-2017',
+                        required=False)
     return parser.parse_args()
 
 def format_output(org_amt, conv_amt, org_ufrom, conv_uto):
-    """
-    Return a string containing the original amount, original unit,
-    converted amount, and unit converted to in a nice easy to read format.
-
-    :param org_amt: float, original amount before conversion
-    :param conv_amt: float, amount after conversion
-    :param org_ufrom: string, original unit
-    :param conv_uto: string, unit after conversion
-    """
+    """Return a string containing the original amount, original unit,
+    converted amount, and unit converted to in a nice easy to read format."""
     return '{0} {1} is {2} {3}'.format(org_amt, org_ufrom, conv_amt, conv_uto)
 
 def main():

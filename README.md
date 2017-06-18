@@ -28,12 +28,13 @@ Note: you may or may not need "sudo" but it was required for installing in my en
 
 After installation is completed, you may run the unitconvert tool using the following command:
 
-`runconvert.py -h -a AMOUNT -f UNIT_FROM -t UNIT_TO`
+`unitconvert -h -a AMOUNT -f UNIT_FROM -t UNIT_TO -v VERSION`
 
 Arguments:
 * -a AMOUNT: Amount to convert
 * -f UNIT_FROM: Unit to convert from
 * -t UNIT_TO: Unit to convert to
+* -v VERSION: Optional, print version info
 * -h with no other arguments: print help info
 
 Available unit types and unit arguments (in parentheses):
