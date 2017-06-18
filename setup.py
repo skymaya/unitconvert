@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='unitconvert',
-    version='1.0.0',
+    version='1.0.1',
     license='MIT',
     author='Sky Maya',
     author_email='skymaya@gmail.com',
@@ -20,7 +20,7 @@ setup(
     },
     keywords="unitconvert conversions units",
     classifiers=[
-        'Development Status :: 1.0.0 - Beta',
+        'Development Status :: 1.0.1 - Beta',
         'Environment :: Console',
         'Intended Audience :: General Audience',
         'License :: OSI Approved :: MIT License',

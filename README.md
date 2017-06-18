@@ -1,4 +1,4 @@
-# Unitconvert: Unit conversion tool - Version 1.0.0
+# Unitconvert: Unit conversion tool - Version 1.0.1
 
 ## Synopsis
 
@@ -44,7 +44,7 @@ Available unit types and unit arguments (in parentheses):
 * Time: Millisecond (ms), second (sec), Minute (min), Hour (hr), Day (day), Week (wk), Month (mo), Year (yr)
 * Volume:
   - Metric: Milliliter (ml), Liter (l)
-  - US customary: Teaspoon (tsp), Tablespoon (tbsp), Cup (cup), Pint (pt), Quart (qt), Gallon (gal)
+  - US customary: Teaspoon (tsp), Tablespoon (tbsp), fluid Ounces (floz), Cup (cup), Pint (pt), Quart (qt), Gallon (gal)
   - US legal: Cup (lcup)
   - Cubic: Cubic Inch (in3), Cubic Foot (ft3)
 * Mass: Milligram (mg), Gram (g), Ounce (oz), Pound (lb), Kilogram (kg)
@@ -79,6 +79,9 @@ Get in touch with me if you'd like to contribute.
 The code contained within this repository is released under the MIT license.
 
 ## Changelog
+
+### Version 1.0.1
+* 06/17/2017: Added fluid ounces
 
 ### Version 1.0.0
 * 06/10/2017: Initial release
