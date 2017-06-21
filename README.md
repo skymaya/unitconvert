@@ -64,7 +64,7 @@ Note: you may or may not need "sudo" but it was required for updating in my envi
 
 If you want to uninstall the application, run the following:
 
-`sudo pip uninstall sitemap`
+`sudo pip uninstall unitconvert`
 
 Note: you may or may not need "sudo" but it was required for updating in my environment.
 
