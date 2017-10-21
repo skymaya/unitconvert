@@ -18,11 +18,9 @@ Additionally, the application has been tested on the following systems and pytho
 
 ## Installation
 
-Git clone this repo or download the source and unpack into a directory. Install with:
+Install with pip:
 
-`sudo pip install /full/path/to/sourcedirectory`
-
-Note: you may or may not need "sudo" but it was required for installing in my environment.
+`pip install unitconvert`
 
 ## Usage
 
@@ -54,19 +52,15 @@ Available unit types and unit arguments (in parentheses):
 
 ## Updating
 
-If you want to update the application currently installed, just run the following after downloading the newest source files:
+If you want to update the application currently installed, just run the following to upgrade with pip:
 
-`sudo pip install /full/path/to/sourcedirectory --upgrade`
-
-Note: you may or may not need "sudo" but it was required for updating in my environment.
+`pip install unitconvert --upgrade`
 
 ## Uninstalling
 
-If you want to uninstall the application, run the following:
+If you want to uninstall the application, run the following to uninstall with pip:
 
-`sudo pip uninstall unitconvert`
-
-Note: you may or may not need "sudo" but it was required for updating in my environment.
+`pip uninstall unitconvert`
 
 ## To Do
 
