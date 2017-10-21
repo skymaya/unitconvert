@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='unitconvert',
-    version='1.0.1',
+    version='1.0.2',
     license='MIT',
     author='Sky Maya',
     author_email='skymaya@gmail.com',

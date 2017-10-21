@@ -1,4 +1,4 @@
-# Unitconvert: Unit conversion tool - Version 1.0.1
+# Unitconvert: Unit conversion tool - Version 1.0.2
 
 ## Synopsis
 
@@ -75,6 +75,9 @@ Get in touch with me if you'd like to contribute.
 The code contained within this repository is released under the MIT license.
 
 ## Changelog
+
+### Version 1.0.2
+* 10/21/2017: Updated README
 
 ### Version 1.0.1
 * 06/17/2017: Added fluid ounces
