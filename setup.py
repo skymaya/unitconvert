@@ -6,12 +6,12 @@ from setuptools import setup, find_packages
 
 setup(
     name='unitconvert',
-    version='1.0.2',
+    version='1.0.3',
     license='MIT',
     author='Sky Maya',
     author_email='skymaya@gmail.com',
     url='https://github.com/skymaya/unitconvert',
-    description="A command line tool for performing unit conversions",
+    description="A command line tool and import library for performing unit conversions.",
     long_description=open("README.md", "r").read(),
     packages=find_packages(),
     install_requires=[],
