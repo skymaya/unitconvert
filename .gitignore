@@ -1,2 +1,5 @@
 *.pyc
 unitconvert/*.pyc
+unitconvert.egg-info
+dist
+build
