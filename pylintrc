@@ -1,0 +1,14 @@
+[MASTER]
+reports=no
+
+# Reasons disabled:
+# duplicate-code - unavoidable
+# invalid-name - module definition
+# locally-disabled - it spams too much
+# redefined-variable-type - this is Python, we're duck typing!
+
+disable=
+  duplicate-code,
+  invalid-name,
+  locally-disabled,
+  redefined-variable-type
