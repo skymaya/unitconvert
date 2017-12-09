@@ -1,4 +1,4 @@
-# Unitconvert: Unit conversion tool - Version 1.0.3
+# Unitconvert: Unit conversion tool - Version 1.0.4
 
 ## Synopsis
 
@@ -98,6 +98,9 @@ Get in touch with me if you'd like to contribute.
 The code contained within this repository is released under the MIT license.
 
 ## Changelog
+
+### Version 1.0.4
+* TBA: Converted individual class methods to single dict for simplicity. Added new module to hold parent classes. Updated setup.py and runconvert.py with new version.
 
 ### Version 1.0.3
 * 10/21/2017: Updated README with import instructions. Updated setup.py and runconvert.py with updated description.
