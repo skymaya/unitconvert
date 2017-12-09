@@ -82,7 +82,7 @@ Temperature: F, C, K
                         required=True)
     parser.add_argument('-t', '--unit_to', help='Unit to convert to',
                         required=True)
-    parser.add_argument('-v', '--version', help='unitconvert, Version 1.0.3, 2016-2017',
+    parser.add_argument('-v', '--version', help='unitconvert, Version 1.0.4, 2016-2017',
                         required=False)
     return parser.parse_args()
 
