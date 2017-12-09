@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# pylint: disable=I0011,W0108
+# pylint: disable=I0011,W0108,R0903
 
 """Unit tests for the timeunits module"""
 
@@ -8,26 +8,14 @@
 import unittest
 
 
-class TimeUnit(object):
-    """
-    Initialize a TimeUnit to return the results of doconvert(), for the
-    purpose of converting one time unit to another time unit
-
-    :param amt: float, amount to convert from
-    :param ufrom: string, unit to convert from
-    :param uto: string, unit to convert to
-    """
+class PositiveUnit(object):
+    """docstring"""
     def __init__(self, amt, ufrom, uto):
-        self.time_base = 1.0  # minutes in a minute
         self.amt = amt
         self.ufrom = ufrom
         self.uto = uto
 
-    def getuval(self, argument):
-        """Return a function to calculate the unit's value"""
-        function = 'unit_{0}'.format(str(argument))
-        function = getattr(self, function)
-        return function()
+        self.units = {}
 
     def doconvert(self):
         """
@@ -39,48 +27,32 @@ class TimeUnit(object):
         """
         if self.amt < 0:
             raise ValueError('Amount must be a positive number')
-        conv = (self.amt * self.getuval(self.ufrom)) / self.getuval(self.uto)
+        conv = (self.amt * self.units[self.ufrom]) / self.units[self.uto]
         return conv
 
-    def unit_ms(self):
-        """Return the value of one Millisecond (ms)
-        based on a base time value"""
-        return (self.time_base / 1000.0) / 60.0
 
-    def unit_sec(self):
-        """Return the value of one Second (sec)
-        based on a base time value"""
-        return self.time_base / 60.0
+class TimeUnit(PositiveUnit):
+    """
+    Initialize a TimeUnit to return the results of doconvert(), for the
+    purpose of converting one time unit to another time unit
 
-    def unit_min(self):
-        """Return the value of one Minute (min)
-        based on a base time value"""
-        return self.time_base
+    :param amt: float, amount to convert from
+    :param ufrom: string, unit to convert from
+    :param uto: string, unit to convert to
+    """
+    def __init__(self, *args, **kwargs):
+        super(TimeUnit, self).__init__(*args, **kwargs)
 
-    def unit_hr(self):
-        """Return the value of one Hour (hr)
-        based on a base time value"""
-        return self.time_base * 60.0
-
-    def unit_day(self):
-        """Return the value of one Day (day)
-        based on a base time value"""
-        return (self.time_base * 60.0) * 24.0
-
-    def unit_wk(self):
-        """Return the value of one Week (wk)
-        based on a base time value"""
-        return ((self.time_base * 60.0) * 24.0) * 7
-
-    def unit_mo(self):
-        """Return the value of one Month (mo)
-        based on a base time value"""
-        return (((self.time_base * 60.0) * 24.0) * 365.0) / 12
-
-    def unit_yr(self):
-        """Return the value of one Year (yr)
-        based on a base time value"""
-        return ((self.time_base * 60.0) * 24.0) * 365.0
+        self.units = {
+            'ms': (1.0 / 1000.0) / 60.0,
+            'sec': 1.0 / 60.0,
+            'min': 1.0, # base - minutes in a minute
+            'hr': 60.0,
+            'day': 60.0 * 24.0,
+            'wk': (60.0 * 24.0) * 7,
+            'mo': ((60.0 * 24.0) * 365.0) / 12,
+            'yr': (60.0 * 24.0) * 365.0
+        }
 
 
 class TestConversions(unittest.TestCase):
