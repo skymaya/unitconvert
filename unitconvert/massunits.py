@@ -15,8 +15,9 @@ Exportables:
                 doconvert: Return calculated conversion between two units
 """
 
+from unitconvert.parentclasses import PositiveUnit
 
-class MassUnit(object):
+class MassUnit(PositiveUnit):
     """
     Initialize a MassUnit to return the results of doconvert(), for the
     purpose of converting one mass unit to another mass unit
@@ -25,53 +26,15 @@ class MassUnit(object):
     :param ufrom: string, unit to convert from
     :param uto: string, unit to convert to
     """
-    def __init__(self, amt, ufrom, uto):
-        self.metric_base = 1.0  # grams in a gram
-        self.imperial_base = 28.349523125  # grams in an ounce
-        self.amt = amt
-        self.ufrom = ufrom
-        self.uto = uto
+    def __init__(self, *args, **kwargs):
+        super(MassUnit, self).__init__(*args, **kwargs)
+        self.metric_base = 1.0 # metric base - grams in a gram
+        self.imperial_base = 28.349523125 # imperial base - grams in an ounce
 
-    def _getuval(self, argument):
-        """Return a function to calculate the unit's value"""
-        function = '_unit_{0}'.format(str(argument))
-        function = getattr(self, function)
-        return function()
-
-    def doconvert(self):
-        """
-        Return calculated conversion between two units
-
-        :returns: string containing original unit and value with converted
-        unit and value
-        :raises ValueError: if the amount (amt) is less than 0
-        """
-        if self.amt < 0:
-            raise ValueError('Amount must be a positive number')
-        conv = (self.amt * self._getuval(self.ufrom)) / self._getuval(self.uto)
-        return conv
-
-    def _unit_mg(self):
-        """Return the value of one Milligram (mg)
-        based on a base metric value"""
-        return self.metric_base / 1000.0
-
-    def _unit_g(self):
-        """Return the value of one Gram (g)
-        based on a base metric value"""
-        return self.metric_base
-
-    def _unit_oz(self):
-        """Return the value of one Ounce (oz)
-        based on a base imperial value"""
-        return self.imperial_base
-
-    def _unit_lb(self):
-        """Return the value of one Pound (lb)
-        based on a base imperial value"""
-        return self.imperial_base * 16.0
-
-    def _unit_kg(self):
-        """Return the value of one Kilogram (kg)
-        based on a base metric value"""
-        return self.metric_base * 1000.0
+        self.units = {
+            'mg': self.metric_base / 1000.0,
+            'g': self.metric_base,
+            'oz': self.imperial_base,
+            'lb': self.imperial_base * 16.0,
+            'kg': self.metric_base * 1000.0
+        }
