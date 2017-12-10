@@ -59,7 +59,7 @@ def do_argparser():
     """Parse and return command line arguments"""
     parser = argparse.ArgumentParser(
         description='''
-        A simple command-line unit conversion tool.
+        A command line tool and import library for performing unit conversions.
         ''',
         epilog='''Available unit types and unit arguments:
 Digital:
@@ -82,7 +82,7 @@ Temperature: F, C, K
                         required=True)
     parser.add_argument('-t', '--unit_to', help='Unit to convert to',
                         required=True)
-    parser.add_argument('-v', '--version', help='unitconvert, Version 1.0.1, 2016-2017',
+    parser.add_argument('-v', '--version', help='unitconvert, Version 1.0.4, 2016-2017',
                         required=False)
     return parser.parse_args()
 

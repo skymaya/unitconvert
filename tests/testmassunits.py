@@ -1,34 +1,21 @@
 #!/usr/bin/python
 
-# pylint: disable=I0011,W0108
+# pylint: disable=I0011,W0108,R0903
 
-"""Unit tests for the temperatureunits module"""
+"""Unit tests for the massunits module"""
 
 #  standard library imports
 import unittest
 
 
-class MassUnit(object):
-    """
-    Initialize a MassUnit to return the results of doconvert(), for the
-    purpose of converting one mass unit to another mass unit
-
-    :param amt: float, amount to convert from
-    :param ufrom: string, unit to convert from
-    :param uto: string, unit to convert to
-    """
+class PositiveUnit(object):
+    """docstring"""
     def __init__(self, amt, ufrom, uto):
-        self.metric_base = 1.0  # grams in a gram
-        self.imperial_base = 28.349523125  # grams in an ounce
         self.amt = amt
         self.ufrom = ufrom
         self.uto = uto
 
-    def getuval(self, argument):
-        """Return a function to calculate the unit's value"""
-        function = 'unit_{0}'.format(str(argument))
-        function = getattr(self, function)
-        return function()
+        self.units = {}
 
     def doconvert(self):
         """
@@ -40,33 +27,31 @@ class MassUnit(object):
         """
         if self.amt < 0:
             raise ValueError('Amount must be a positive number')
-        conv = (self.amt * self.getuval(self.ufrom)) / self.getuval(self.uto)
+        conv = (self.amt * self.units[self.ufrom]) / self.units[self.uto]
         return conv
 
-    def unit_mg(self):
-        """Return the value of one Milligram (mg)
-        based on a base metric value"""
-        return self.metric_base / 1000.0
 
-    def unit_g(self):
-        """Return the value of one Gram (g)
-        based on a base metric value"""
-        return self.metric_base
+class MassUnit(PositiveUnit):
+    """
+    Initialize a MassUnit to return the results of doconvert(), for the
+    purpose of converting one mass unit to another mass unit
 
-    def unit_oz(self):
-        """Return the value of one Ounce (oz)
-        based on a base imperial value"""
-        return self.imperial_base
+    :param amt: float, amount to convert from
+    :param ufrom: string, unit to convert from
+    :param uto: string, unit to convert to
+    """
+    def __init__(self, *args, **kwargs):
+        super(MassUnit, self).__init__(*args, **kwargs)
+        self.metric_base = 1.0 # metric base - grams in a gram
+        self.imperial_base = 28.349523125 # imperial base - grams in an ounce
 
-    def unit_lb(self):
-        """Return the value of one Pound (lb)
-        based on a base imperial value"""
-        return self.imperial_base * 16.0
-
-    def unit_kg(self):
-        """Return the value of one Kilogram (kg)
-        based on a base metric value"""
-        return self.metric_base * 1000.0
+        self.units = {
+            'mg': self.metric_base / 1000.0,
+            'g': self.metric_base,
+            'oz': self.imperial_base,
+            'lb': self.imperial_base * 16.0,
+            'kg': self.metric_base * 1000.0
+        }
 
 
 class TestConversions(unittest.TestCase):

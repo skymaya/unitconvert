@@ -4,3 +4,5 @@ unitconvert.egg-info
 dist
 build
 README.txt
+benchmark.py
+unitconvert/areaunits.py

@@ -8,27 +8,14 @@
 import unittest
 
 
-class DigitalUnit(object):
-    """
-    Initialize a DigitalUnit to return the results of doconvert(), for the
-    purpose of converting one digital unit to another digital unit
-
-    :param amt: float, amount to convert from
-    :param ufrom: string, unit to convert from
-    :param uto: string, unit to convert to
-    """
+class PositiveUnit(object):
+    """docstring"""
     def __init__(self, amt, ufrom, uto):
-        self.decimal_base = 1.0  # bytes in a byte (decimal)
-        self.binary_base = 1.024 # bytes in a byte (binary)
         self.amt = amt
         self.ufrom = ufrom
         self.uto = uto
 
-    def getuval(self, argument):
-        """Return a function to calculate the unit's value"""
-        function = 'unit_{0}'.format(str(argument))
-        function = getattr(self, function)
-        return function()
+        self.units = {}
 
     def doconvert(self):
         """
@@ -40,93 +27,45 @@ class DigitalUnit(object):
         """
         if self.amt < 0:
             raise ValueError('Amount must be a positive number')
-        conv = (self.amt * self.getuval(self.ufrom)) / self.getuval(self.uto)
+        conv = (self.amt * self.units[self.ufrom]) / self.units[self.uto]
         return conv
 
-    def unit_B(self):
-        """Return the value of one Byte (B)
-        based on a base decimal value"""
-        return self.decimal_base
 
-    def unit_kB(self):
-        """Return the value of one Kilobyte (kB)
-        based on a base decimal value"""
-        return self.decimal_base * 1000
+class DigitalUnit(PositiveUnit):
+    """
+    Initialize a DigitalUnit to return the results of doconvert(), for the
+    purpose of converting one digital unit to another digital unit
 
-    def unit_KiB(self):
-        """Return the value of one Kibibyte (KiB)
-        based on a base binary value"""
-        return self.binary_base * 1000
+    :param amt: float, amount to convert from
+    :param ufrom: string, unit to convert from
+    :param uto: string, unit to convert to
+    """
+    def __init__(self, *args, **kwargs):
+        super(DigitalUnit, self).__init__(*args, **kwargs)
+        self.dec_base = 1.0 # decimal base - bytes in a byte
+        self.bin_base = 1.024 # binary base - bytes in a byte
+        self.kb = self.dec_base * 1000.0 # kB base
+        self.kib = self.bin_base * 1000.0 # KiB base
 
-    def unit_MB(self):
-        """Return the value of one Megabyte (MB)
-        based on a base decimal value"""
-        return (self.decimal_base * 1000) ** 2
-
-    def unit_MiB(self):
-        """Return the value of one Mebibyte (MiB)
-        based on a base binary value"""
-        return (self.binary_base * 1000) ** 2
-
-    def unit_GB(self):
-        """Return the value of one Gigabyte (GB)
-        based on a base decimal value"""
-        return (self.decimal_base * 1000) ** 3
-
-    def unit_GiB(self):
-        """Return the value of one Gibibyte (GiB)
-        based on a base binary value"""
-        return (self.binary_base * 1000) ** 3
-
-    def unit_TB(self):
-        """Return the value of one Terabyte (TB)
-        based on a base decimal value"""
-        return (self.decimal_base * 1000) ** 4
-
-    def unit_TiB(self):
-        """Return the value of one Tebibyte (TiB)
-        based on a base binary value"""
-        return (self.binary_base * 1000) ** 4
-
-    def unit_PB(self):
-        """Return the value of one Petabyte (PB)
-        based on a base decimal value"""
-        return (self.decimal_base * 1000) ** 5
-
-    def unit_PiB(self):
-        """Return the value of one Pebibyte (PiB)
-        based on a base binary value"""
-        return (self.binary_base * 1000) ** 5
-
-    def unit_EB(self):
-        """Return the value of one Exabyte (EB)
-        based on a base decimal value"""
-        return (self.decimal_base * 1000) ** 6
-
-    def unit_EiB(self):
-        """Return the value of one Exbibyte (EiB)
-        based on a base binary value"""
-        return (self.binary_base * 1000) ** 6
-
-    def unit_ZB(self):
-        """Return the value of one Zettabyte (ZB)
-        based on a base decimal value"""
-        return (self.decimal_base * 1000) ** 7
-
-    def unit_ZiB(self):
-        """Return the value of one Zebibyte (ZiB)
-        based on a base binary value"""
-        return (self.binary_base * 1000) ** 7
-
-    def unit_YB(self):
-        """Return the value of one Yottabyte (YB)
-        based on a base decimal value"""
-        return (self.decimal_base * 1000) ** 8
-
-    def unit_YiB(self):
-        """Return the value of one Yobibyte (YiB)
-        based on a base binary value"""
-        return (self.binary_base * 1000) ** 8
+        self.units = {
+            'B': self.dec_base,
+            'kB': self.kb,
+            'KiB': self.kib,
+            'MB': self.kb ** 2,
+            'MiB': self.kib ** 2,
+            'GB': self.kb ** 3,
+            'GiB': self.kib ** 3,
+            'TB': self.kb ** 4,
+            'TiB': self.kib ** 4,
+            'PB': self.kb ** 5,
+            'PiB': self.kib ** 5,
+            'EB': self.kb ** 6,
+            'EiB': self.kib ** 6,
+            'ZB': self.kb ** 7,
+            'ZiB': self.kib ** 7,
+            'YB': self.kb ** 8,
+            'YiB': self.kib ** 8
+        }
 
 
 class TestConversions(unittest.TestCase):
